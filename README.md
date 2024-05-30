@@ -149,3 +149,8 @@ docker pull ollama/ollama
 
 
 docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama_new ollama/ollama![Uploading image.png…]()
+-----------------
+Pip install llama_index=0.8.5.post2
+Pip uninstall pydantic
+Pip install pydantic==1.10.14
+Pip install ipywidgets
