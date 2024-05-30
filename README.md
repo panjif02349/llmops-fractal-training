@@ -1,6 +1,6 @@
 # llmops-fractal-training
 
-yum install libXcomposite libXcursor libXi libXtst libXrandr alsa-lib mesa-libEGL libXdamagemesa-libGL libXScrnSaver
+```sudo yum install libXcomposite libXcursor libXi libXtst libXrandr alsa-lib mesa-libEGL libXdamagemesa-libGL libXScrnSaver```
 ------------------------------------------------
 sudo cp ZscalerRootCertificate.crt /etc/pki/ca-trust/source/anchors
 sudo update-ca-trust
@@ -41,15 +41,15 @@ print(result)
 https://ronamosa.io/docs/engineer/AI/Mistral-7B-SageMaker/
 
 ----------------
-sudo yum install -y amazon-linux-extras
-•sudo amazon-linux-extras install epel -y
-•sudo yum-config-manager --enable epel
-•sudo yum install git-lfs
-•git lfs install
-•git clone  https://huggingface.co/lmsys/vicuna-7b-v1.5
-•git clone https://github.com/lm-sys/FastChat.git
-•cd FastChat
-•pip3 install e .
+```sudo yum install -y amazon-linux-extras
+sudo amazon-linux-extras install epel -y
+sudo yum-config-manager --enable epel
+sudo yum install git-lfs
+git lfs install
+git clone  https://huggingface.co/lmsys/vicuna-7b-v1.5
+git clone https://github.com/lm-sys/FastChat.git
+cd FastChat
+pip3 install e .```
 --------------------------
 shelltitle "$ |bash"
 
@@ -76,22 +76,22 @@ pip install protobuf
 pip install SentencePiece
 -------------------------------
 
-•curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-•sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
-•kubectl version --client
+``curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64```
+
 -----------------------------
-•sudo sysctl net.core.bpf_jit_harden
-•sudo nvidia-ctk runtime configure --runtime=docker && sudo systemctl restart docker
-•minikube start --driver docker --container-runtime docker --gpus all
-Kubectl describe nodes
+```sudo sysctl net.core.bpf_jit_harden
+sudo nvidia-ctk runtime configure --runtime=docker && sudo systemctl restart docker
+minikube start --driver docker --container-runtime docker --gpus all
+Kubectl describe nodes```
 -------------------
-•kubectl describe nodes
-•Kubectl get namespaces
-•Kubectl create ns training
-•Kubectl apply –f deployment.yaml –n training
-•Kubectl apply –f service.yaml –n training
-•kubectl get pods -n testing
-•kubectl get events -n testing
+```kubectl describe nodes
+Kubectl get namespaces
+Kubectl create ns training
+Kubectl apply –f deployment.yaml –n training
+Kubectl apply –f service.yaml –n training
+kubectl get pods -n testing
+kubectl get events -n testing```
 -----------------
 apiVersion: apps/v1
 kind: Deployment
