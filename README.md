@@ -160,3 +160,8 @@ git clone https://github.com/run-llama/finetune-embedding
 cd finetune-embedding
 pip install -r requirements.txt
 ----------------------------
+conda create -n rag_env python=3.8
+pip install langchain langchain_community faiss-cpu bs4 tiktoken chromadb sentence-transformers pypdf litellm trulens_eval
+---------------------------
+cookbook
+https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_Structured_RAG.ipynb?ref=blog.langchain.dev
