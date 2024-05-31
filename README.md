@@ -162,9 +162,10 @@ kubectl get events -n testing
 kubectl cp /home/ec2-user/ZscalerRootCertificate.crt <pod_name>:/tmp  -n training
 ```
 # inside the container <need to do this>
+```
 cp /tmp/ZscalerRootCertificate.crt /usr/local/share/ca-certificates/
 update-ca-certificates
-````
+```
 # starting minikube
 ```
 minikube status
@@ -184,11 +185,11 @@ git clone https://github.com/jerryjliu/llama_index
 git clone https://github.com/run-llama/finetune-embedding
 cd finetune-embedding
 pip install -r requirements.txt
-----------------------------
+
 conda create -n rag_env python=3.8
 pip install langchain langchain_community faiss-cpu bs4 tiktoken chromadb sentence-transformers pypdf litellm trulens_eval
 
-````
+```
 -----------------------------------------------------
 # important references
 ```
