@@ -100,7 +100,7 @@ Kubectl create ns training
 ```
 
 # yaml files 
-**deployment.yaml**
+deployment.yaml
 
 ```
 apiVersion: apps/v1
@@ -132,7 +132,7 @@ spec:
             nvidia.com/gpu: 1
 ```
 
-**service.yaml**
+service.yaml
 ```
 apiVersion: v1
 kind: Service
