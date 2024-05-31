@@ -44,10 +44,10 @@ result = generate_text(model, prompt)
 print(result)
 ```
 ------------------------------------
-
-
-----------------
-```sudo yum install -y amazon-linux-extras
+# vicuna with FastChat 
+-----------------------------------
+```
+sudo yum install -y amazon-linux-extras
 sudo amazon-linux-extras install epel -y
 sudo yum-config-manager --enable epel
 sudo yum install git-lfs
@@ -56,7 +56,8 @@ git clone  https://huggingface.co/lmsys/vicuna-7b-v1.5
 git clone https://github.com/lm-sys/FastChat.git
 cd FastChat
 pip3 install e .```
---------------------------
+
+# Utility - using the multiple windows
 shelltitle "$ |bash"
 
 # Create and name screens
@@ -69,36 +70,38 @@ screen -t "Screen 5"
 Cntr + A leave both -> 1 switch between screens
 Cntr+A leave both and D
 
--------------------
-•First screen - python3 -m fastchat.serve.controller
-•Second screen - python3 -m fastchat.serve.model_worker --model-path
-•Third screen - python3 -m fastchat.serve.test_message --model-name vicuna-7b-v1.5
--------------------------
-
+## screens to maintain
+First screen - python3 -m fastchat.serve.controller
+Second screen - python3 -m fastchat.serve.model_worker --model-path
+Third screen - python3 -m fastchat.serve.test_message --model-name vicuna-7b-v1.5
+```
+### running modules not found
+```
 pip install transformers
 pip install torch
 pip install accelerate
 pip install protobuf
 pip install SentencePiece
--------------------------------
+```
+# install minikube
+url -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 
-``curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64```
-
------------------------------
-```sudo sysctl net.core.bpf_jit_harden
+sudo sysctl net.core.bpf_jit_harden
 sudo nvidia-ctk runtime configure --runtime=docker && sudo systemctl restart docker
 minikube start --driver docker --container-runtime docker --gpus all
-Kubectl describe nodes```
--------------------
-```kubectl describe nodes
+minikube kubectl describe nodes
+
+```
+# kubernetes commands
+```
 Kubectl get namespaces
 Kubectl create ns training
-Kubectl apply –f deployment.yaml –n training
-Kubectl apply –f service.yaml –n training
-kubectl get pods -n testing
-kubectl get events -n testing```
------------------
+```
+
+# yaml files 
+**deployment.yaml**
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -125,8 +128,10 @@ spec:
           requests:
             nvidia.com/gpu: 1 # Request 1 GPU
           limits:
-            nvidia.com/gpu: 1 #
----------------
+            nvidia.com/gpu: 1
+```
+**service.yaml**
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -141,21 +146,32 @@ spec:
     name: http
     targetPort: http
     protocol: TCP
---------------
+```
+# applying the yaml files
+```
+kubectl apply -f deployment.yaml -n training
+Kubectl apply –f service.yaml –n training
+kubectl get pods -n testing
+kubectl get events -n testing
+```
+# adding zscaler certificate to the deployment
+```
 kubectl cp /home/ec2-user/ZscalerRootCertificate.crt <pod_name>:/tmp  -n training
-
+```
+# inside the container <need to do this>
 cp /tmp/ZscalerRootCertificate.crt /usr/local/share/ca-certificates/
 update-ca-certificates
-
+````
+# starting minikube
+```
 minikube status
-
 minikube start --driver docker --container-runtime docker --gpus all
-
-docker pull ollama/ollama
-
-
+docker pull ollama/ollama:7b
+```
+# not proper commands
+```
 docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama_new ollama/ollama![Uploading image.png…]()
------------------
+
 Pip install llama_index=0.8.5.post2
 Pip uninstall pydantic
 Pip install pydantic==1.10.14
@@ -168,7 +184,9 @@ pip install -r requirements.txt
 ----------------------------
 conda create -n rag_env python=3.8
 pip install langchain langchain_community faiss-cpu bs4 tiktoken chromadb sentence-transformers pypdf litellm trulens_eval
----------------------------
+
+````
+-----------------------------------------------------
 # important references
 ```
 https://ronamosa.io/docs/engineer/AI/Mistral-7B-SageMaker/
