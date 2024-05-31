@@ -1,20 +1,25 @@
 # llmops-fractal-training
 
-```sudo yum install libXcomposite libXcursor libXi libXtst libXrandr alsa-lib mesa-libEGL libXdamagemesa-libGL libXScrnSaver```
-------------------------------------------------
+```
+sudo yum install libXcomposite libXcursor libXi libXtst libXrandr alsa-lib mesa-libEGL libXdamagemesa-libGL libXScrnSaver
 sudo cp ZscalerRootCertificate.crt /etc/pki/ca-trust/source/anchors
 sudo update-ca-trust
------------------------
+```
+# pulling ollana
+```
 curl -fsSL https://ollama.com/install.sh | sh
------------------------------------
+
+```
+## Testing the model
+```
 curl -X POST http://localhost:11434/api/generate -d '{
   "model": "llama3:8b”,
   "prompt":"Why is the sky blue?"
 }'
-
-----------------------------------
+```
+## Testing using python
+```
 import requests
-
 def generate_text(model, prompt):
     url = "http://localhost:11434/api/generate"
     headers = {"Accept":"application/json","Content-Type":"application/json"}
@@ -37,8 +42,9 @@ model = "llama3:8b"
 prompt = "Why is the sky blue?"
 result = generate_text(model, prompt)
 print(result)
+```
 ------------------------------------
-https://ronamosa.io/docs/engineer/AI/Mistral-7B-SageMaker/
+
 
 ----------------
 ```sudo yum install -y amazon-linux-extras
@@ -163,5 +169,10 @@ pip install -r requirements.txt
 conda create -n rag_env python=3.8
 pip install langchain langchain_community faiss-cpu bs4 tiktoken chromadb sentence-transformers pypdf litellm trulens_eval
 ---------------------------
+# important references
+```
+https://ronamosa.io/docs/engineer/AI/Mistral-7B-SageMaker/
+
 cookbook
 https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_Structured_RAG.ipynb?ref=blog.langchain.dev
+```
