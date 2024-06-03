@@ -1,0 +1,37 @@
+
+From A PDF file using unstrcutured python module 
+we can get following elements 
+1. Text
+2. Table
+3. Image
+
+Multi vector retriever.
+
+For each chunk.
+1. Original full chunk text.
+2. Summary of the chunk.
+3. Table content.
+4. 2 Q&A pair.
+5. Key subjects.
+6. entity-relationship information
+
+Latest RAG technique
+1. graphdb + embedding 
+
+Finetuning of embedding models
+Generate your dataset.
+1. Original full chunk text.
+2. 2 Q&A pair.
+
+finetune your emebdding.
+load the existing model and perform the tuning
+
+
+
+
+
+
+
+
+
+
